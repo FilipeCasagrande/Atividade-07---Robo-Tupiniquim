@@ -35,7 +35,6 @@
                         cardeais = 'N';
                     }
                 }
-
             }   
             Console.WriteLine(cardeais);
             Console.ReadLine();
