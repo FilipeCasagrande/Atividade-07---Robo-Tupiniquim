@@ -15,7 +15,6 @@
 
             for (int i = 0; i < orientacao.Length; i++)
             {
-
                 if (orientacao[i] == 'E')
                 {
                     if (cardeais == 'N')
@@ -35,8 +34,28 @@
                         cardeais = 'N';
                     }
                 }
-            }   
-            Console.WriteLine(cardeais);
+               
+                else if (orientacao[i] == 'M')
+                {
+                    if (cardeais == 'N')
+                    {
+                        y += 1;
+                    }
+                    else if (cardeais == 'L')
+                    {
+                        x += 1;
+                    }
+                    else if (cardeais == 'S')
+                    {
+                        y -= 1;
+                    }
+                    else if (cardeais == 'O')
+                    {
+                        x -=1;
+                    }
+                }
+            }
+            Console.WriteLine($"{x}, {y}, {cardeais}");
             Console.ReadLine();
         }
     }
