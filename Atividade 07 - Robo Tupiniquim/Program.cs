@@ -1,163 +1,43 @@
-﻿namespace Atividade_07___Robo_Tupiniquim
+﻿namespace Atividade07Robo.ConsoleApp;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            int x = 1, y = 2;
-            char cardeais = 'N';
-            string comando = "EMEMEMEMM";
-            char[] orientacao = comando.ToCharArray();
+        Robo robo1 = new Robo();
 
-            Robo1(x, y, comando, orientacao, cardeais);
+        string posicaoInicial = "1 2 N";
+        string comando = "EMEMEMEMM";
 
-            Robo2(x, y, comando, orientacao, cardeais);
-        }
-        static void Robo1(int x, int y, string comando, char[] orientacao, char cardeais)
-        {
+        string[] coordenadasIniciais = posicaoInicial.Split(' ');
 
-            for (int i = 0; i < orientacao.Length; i++)
-            {
-                if (orientacao[i] == 'D')
-                {
-                    if (cardeais == 'N')
-                    {
-                        cardeais = 'L';
-                    }
-                    else if (cardeais == 'L')
-                    {
-                        cardeais = 'S';
-                    }
-                    else if (cardeais == 'S')
-                    {
-                        cardeais = 'O';
-                    }
-                    else if (cardeais == 'O')
-                    {
-                        cardeais = 'N';
-                    }
-                }
+        robo1.posicaoX = Convert.ToInt32(coordenadasIniciais[0]);
+        robo1.posicaoY = Convert.ToInt32(coordenadasIniciais[1]);
+        robo1.direcao = Convert.ToChar(coordenadasIniciais[2]);
 
-                if (orientacao[i] == 'E')
-                {
-                    if (cardeais == 'N')
-                    {
-                        cardeais = 'O';
-                    }
-                    else if (cardeais == 'O')
-                    {
-                        cardeais = 'S';
-                    }
-                    else if (cardeais == 'S')
-                    {
-                        cardeais = 'L';
-                    }
-                    else if (cardeais == 'L')
-                    {
-                        cardeais = 'N';
-                    }
-                }
+        char[] instrucoes = comando.ToCharArray();
 
-                else if (orientacao[i] == 'M')
-                {
-                    if (cardeais == 'N')
-                    {
-                        y += 1;
-                    }
-                    else if (cardeais == 'L')
-                    {
-                        x += 1;
-                    }
-                    else if (cardeais == 'S')
-                    {
-                        y -= 1;
-                    }
-                    else if (cardeais == 'O')
-                    {
-                        x -= 1;
-                    }
-                }
-            }
-            Console.Write("As cordenadas do robô 1 são: ");
-            Console.WriteLine($"{x}, {y}, {cardeais}");
-            Console.WriteLine("-------------------------------------------------------");
-            Console.WriteLine("Precione enter para ver a localização do robô 2");
-            Console.WriteLine("-------------------------------------------------------");
-            Console.ReadLine();
-            return;
+        robo1.Explorar(instrucoes);
 
-        }
-        static void Robo2(int x, int y, string comando, char[] orientacao, char cardeais)
-        {
-            x = 3; y = 3; comando = "MMDMMDMDDM"; cardeais = 'L';
-            orientacao = comando.ToCharArray();
+        robo1.ExibirCoordenadas();
 
-            for (int i = 0; i < orientacao.Length; i++)
-            {
-                if (orientacao[i] == 'D')
-                {
-                    if (cardeais == 'N')
-                    {
-                        cardeais = 'L';
-                    }
-                    else if (cardeais == 'L')
-                    {
-                        cardeais = 'S';
-                    }
-                    else if (cardeais == 'S')
-                    {
-                        cardeais = 'O';
-                    }
-                    else if (cardeais == 'O')
-                    {
-                        cardeais = 'N';
-                    }
-                }
+        string posicaoInicialDois = "3 3 L";
+        string comandoDois = "MMDMMDMDDM";
 
-                if (orientacao[i] == 'E')
-                {
-                    if (cardeais == 'N')
-                    {
-                        cardeais = 'O';
-                    }
-                    else if (cardeais == 'O')
-                    {
-                        cardeais = 'S';
-                    }
-                    else if (cardeais == 'S')
-                    {
-                        cardeais = 'L';
-                    }
-                    else if (cardeais == 'L')
-                    {
-                        cardeais = 'N';
-                    }
-                }
+        Robo robo2 = new Robo();
 
-                else if (orientacao[i] == 'M')
-                {
-                    if (cardeais == 'N')
-                    {
-                        y += 1;
-                    }
-                    else if (cardeais == 'L')
-                    {
-                        x += 1;
-                    }
-                    else if (cardeais == 'S')
-                    {
-                        y -= 1;
-                    }
-                    else if (cardeais == 'O')
-                    {
-                        x -= 1;
-                    }
-                }
-            }
-            Console.Write("As cordenadas do robô 2 são: ");
-            Console.WriteLine($"{x}, {y}, {cardeais}");
-            Console.ReadLine();
-            return;
-        }
+        string[] coordenadasIniciaisDois = posicaoInicialDois.Split(' ');
+
+        robo2.posicaoX = Convert.ToInt32(coordenadasIniciaisDois[0]);
+        robo2.posicaoY = Convert.ToInt32(coordenadasIniciaisDois[1]);
+        robo2.direcao = Convert.ToChar(coordenadasIniciaisDois[2]);
+
+        char[] instrucoesDois = comandoDois.ToCharArray();
+
+        robo2.Explorar(instrucoesDois);
+
+        robo2.ExibirCoordenadas();
+
+        Console.ReadLine();
     }
 }
